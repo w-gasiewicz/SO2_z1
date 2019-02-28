@@ -41,12 +41,9 @@ void Philosopher :: Eating(Philosopher *p)
  }
 double Philosopher :: GenerateRandomTime()
 {//function generates random time in seconds as double value
-    uniform_real_distribution<double> unif(2,5);    
+    uniform_real_distribution<double> unif(3.5,5);    
     double value=unif(re);
     return value;
-}
-void Philosopher :: Run(){
- 
 }
 Philosopher::~Philosopher() {
 }
