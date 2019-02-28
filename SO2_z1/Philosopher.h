@@ -14,8 +14,7 @@ public:
     bool isHungry;
     Philosopher(int pID, bool pIsHungry);
     void Philosophizing(Philosopher *p);
-    void Eating(Philosopher *p);    
-    void Run();
+    void Eating(Philosopher *p); 
     virtual ~Philosopher();
 private:    
     double GenerateRandomTime();
