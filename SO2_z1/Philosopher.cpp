@@ -47,4 +47,3 @@ double Philosopher :: GenerateRandomTime()
 }
 Philosopher::~Philosopher() {
 }
-

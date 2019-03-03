@@ -1,19 +1,17 @@
 #include <iostream>
 #include <thread>
 #include <random>
-#include <mutex>
+#include <cstdio>
 #include "Philosopher.h"
 using namespace std;
 
 static const int numOfPhilosophers=5;
-mutex mu;
 thread t[numOfPhilosophers];
 Philosopher philosophersTab[numOfPhilosophers];
-
+bool running=true;
 void Run(Philosopher *p)
 {
-    //mu.lock();
-    while(true)
+    while(running)
     {
             if(philosophersTab[p->id].isHungry)
             {
@@ -26,7 +24,6 @@ void Run(Philosopher *p)
                 p->Philosophizing(&philosophersTab[p->id]);
            } 
     }
-    //mu.unlock();
 }
 void CreatePhilosophers()
 {//function create philosophers objects
@@ -45,7 +42,22 @@ int main(int argc, char** argv)
         t[i]=thread(Run,&philosophersTab[i]);
     }
     
-     for(int i=0;i<numOfPhilosophers;i++)
+    int inputChar;
+    while(true)
+    {
+        inputChar=cin.get();
+        if(inputChar!=27)//while user dont press esc button
+        {
+            cout<<"To stop program press ESC button!"<<endl;
+        }
+        else 
+        {
+            running=false;
+            break;
+        }
+    }
+    
+      for(int i=0;i<numOfPhilosophers;i++)
     {
         t[i].join();
     }
