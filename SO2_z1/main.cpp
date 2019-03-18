@@ -9,6 +9,7 @@ static const int numOfPhilosophers=5;
 thread t[numOfPhilosophers];
 Philosopher philosophersTab[numOfPhilosophers];
 bool running=true;
+
 void Run(Philosopher *p)
 {
     while(running)
@@ -36,7 +37,8 @@ int main(int argc, char** argv)
 {       
     CreatePhilosophers();
     cout<<"Philosophers created."<<endl;
-  
+    cout<<"To stop program press ESC button and enter!"<<endl;
+    
     for(int i=0;i<numOfPhilosophers;i++)
     {
         t[i]=thread(Run,&philosophersTab[i]);
@@ -57,7 +59,7 @@ int main(int argc, char** argv)
         }
     }
     
-      for(int i=0;i<numOfPhilosophers;i++)
+    for(int i=0;i<numOfPhilosophers;i++)
     {
         t[i].join();
     }
